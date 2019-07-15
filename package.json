@@ -20,7 +20,7 @@
     "gulp-minify-css": "^1.2.4",
     "gulp-uglify": "^3.0.2",
     "webpack": "^4.35.3",
-    "webpack-cli": "^3.3.5"
+    "webpack-cli": "^3.3.6"
   },
   "scripts": {
     "build": "webpack"
