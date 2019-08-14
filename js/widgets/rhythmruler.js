@@ -849,7 +849,7 @@ function RhythmRuler () {
         }
     };
 
-    this.playAll = function () {
+    this.playAll = async function () {
         // External call from run button.
         if (this._playing) {
             if (this._playingAll) {
@@ -857,9 +857,8 @@ function RhythmRuler () {
                 // Wait for pause to complete before restarting.
                 this._playingAll = true;
                 var that = this;
-                setTimeout(function () {
+                await delayExecution(1000)
                     that.__resume();
-                }, 1000);
             }
         } else if (!this._playingAll) {
             this.__resume();
@@ -1502,27 +1501,25 @@ function RhythmRuler () {
 
         this._save_lock = false;
 
-        cell.onclick = function () {
+        cell.onclick = async function () {
             // that._save(0);
 	    // Debounce button
 	    if (!that._get_save_lock()) {
 		that._save_lock = true;
 		that._saveTuplets(0);
-		setTimeout(function () {
+		await delayExecution(1000)
 		    that._save_lock = false;
-		}, 1000);
 	    }
         };
 
         var cell = this._addButton(row, 'export-drums.svg', iconSize, _('Save drum machine'), '');
-        cell.onclick = function () {
+        cell.onclick =  async function () {
 	    // Debounce button
 	    if (!that._get_save_lock()) {
 		that._save_lock = true;
 		that._saveMachine(0);
-		setTimeout(function () {
+		await delayExecution(1000)
 		    that._save_lock = false;
-		}, 1000);
 	    }
         };
 
